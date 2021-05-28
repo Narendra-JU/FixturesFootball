@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav_graph"
+    app:startDestination="@id/previousWeekMatches">
+
+    <fragment
+        android:id="@+id/previousWeekMatches"
+        android:name="com.example.fixturesfootball.view.PreviousWeekMatches"
+        android:label="Last Week Fixtures"
+        tools:layout="@layout/fragment_previous_week_matches" />
+    <fragment
+        android:id="@+id/listOfTeamsMatches"
+        android:name="com.example.fixturesfootball.view.ListOfTeamsMatches"
+        android:label="List Of Teams"
+        tools:layout="@layout/fragment_list_of_teams_matches" />
+    <fragment
+        android:id="@+id/nextWeekMatches"
+        android:name="com.example.fixturesfootball.view.NextWeekMatches"
+        android:label="Next Week Fixtures"
+        tools:layout="@layout/fragment_next_week_matches" />
+</navigation>
