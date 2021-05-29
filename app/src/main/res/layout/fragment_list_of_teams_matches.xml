@@ -7,13 +7,12 @@
     tools:context=".view.ListOfTeamsMatches">
 
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_teamA"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,6 +20,7 @@
         android:id="@+id/rv_teamB"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         app:layout_constraintBottom_toBottomOf="@+id/rv_teamA"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,6 +31,7 @@
         android:id="@+id/rv_teamC"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_marginBottom="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/rv_teamA"
         app:layout_constraintStart_toStartOf="@+id/rv_teamA"
@@ -40,10 +41,10 @@
         android:id="@+id/rv_teamD"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_teamC"
         app:layout_constraintEnd_toEndOf="@+id/rv_teamB"
         app:layout_constraintStart_toStartOf="@+id/rv_teamB"
-        app:layout_constraintTop_toBottomOf="@+id/rv_teamB" />
+        app:layout_constraintTop_toTopOf="@+id/rv_teamC" />
 
     <TextView
         android:id="@+id/textViewA"
