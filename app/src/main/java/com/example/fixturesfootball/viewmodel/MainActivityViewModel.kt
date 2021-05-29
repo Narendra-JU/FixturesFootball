@@ -10,14 +10,15 @@ import com.example.fixturesfootball.model.network.CountriesService
 import kotlinx.coroutines.*
 
 class MainActivityViewModel(application: Application) : AndroidViewModel(application) {
-    private val coroutineScope = CoroutineScope(Dispatchers.IO)
     var countriesService = CountriesService.getCountriesDataService()
-    var countries = MutableLiveData<Countries>()
     var countriesList = MutableLiveData<ArrayList<Countries.Result>>()
+    var finalCountryList= MutableLiveData<ArrayList<Countries.Result>>()
 
     fun refresh() {
         fetchCountries()
     }
+
+
 
 
     private fun fetchCountries() {

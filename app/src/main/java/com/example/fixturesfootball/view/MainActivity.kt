@@ -1,20 +1,21 @@
 package com.example.fixturesfootball.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.Observer
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fixturesfootball.R
 import com.example.fixturesfootball.model.countries.Countries
 import com.example.fixturesfootball.viewmodel.MainActivityViewModel
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainActivityViewModel
     private lateinit var adapter: CountriesRecyclerAdapter
     private lateinit var tempList:ArrayList<Countries.Result>
+    private lateinit var finalCountryList:ArrayList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,16 +32,23 @@ class MainActivity : AppCompatActivity() {
                 for (i in 0..15){
                 tempList.add(tempArrayList[i])
                 }
-
                 adapter= CountriesRecyclerAdapter(tempList)
                 recyclerViewMainActivity.adapter=adapter
                 btnFixtures.isEnabled=true
                 btnFixtures.isClickable=true
+
+                finalCountryList= arrayListOf()
+                for(i in tempList){
+                   finalCountryList.add(i.name)
+                }
+
+
             }
         }
 
         btnFixtures.setOnClickListener {
-        val intent=Intent(this,FixtureActivity::class.java)
+        val intent=Intent(this, FixtureActivity::class.java)
+            intent.putExtra("countryList",finalCountryList)
             startActivity(intent)
         }
 
@@ -58,4 +66,6 @@ class MainActivity : AppCompatActivity() {
             }
         )*/
     }
+
+
 }

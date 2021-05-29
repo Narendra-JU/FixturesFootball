@@ -1,14 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.ListOfTeamsMatches">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_teamA"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_teamB"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_teamA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rv_teamA"
+        app:layout_constraintTop_toTopOf="@+id/rv_teamA" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_teamC"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/rv_teamA"
+        app:layout_constraintStart_toStartOf="@+id/rv_teamA"
+        app:layout_constraintTop_toBottomOf="@+id/rv_teamA" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_teamD"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/rv_teamB"
+        app:layout_constraintStart_toStartOf="@+id/rv_teamB"
+        app:layout_constraintTop_toBottomOf="@+id/rv_teamB" />
+
+    <TextView
+        android:id="@+id/textViewA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Group A"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/rv_teamA"
+        app:layout_constraintEnd_toEndOf="@+id/rv_teamA"
+        app:layout_constraintStart_toStartOf="@+id/rv_teamA" />
+
+    <TextView
+        android:id="@+id/textViewB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Group B"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/rv_teamB"
+        app:layout_constraintEnd_toEndOf="@+id/rv_teamB"
+        app:layout_constraintStart_toStartOf="@+id/rv_teamB" />
+
+    <TextView
+        android:id="@+id/textViewC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Group C"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/rv_teamC"
+        app:layout_constraintEnd_toEndOf="@+id/rv_teamC"
+        app:layout_constraintStart_toStartOf="@+id/rv_teamC" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Group D"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/rv_teamD"
+        app:layout_constraintEnd_toEndOf="@+id/rv_teamD"
+        app:layout_constraintStart_toStartOf="@+id/rv_teamD" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

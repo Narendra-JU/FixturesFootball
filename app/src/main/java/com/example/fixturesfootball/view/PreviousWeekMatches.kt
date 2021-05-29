@@ -5,29 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fixturesfootball.R
+import com.example.fixturesfootball.model.countries.Countries
+import kotlinx.android.synthetic.main.fragment_previous_week_matches.*
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [PreviousWeekMatches.newInstance] factory method to
- * create an instance of this fragment.
- */
 class PreviousWeekMatches : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var countriesArrayList: ArrayList<Countries.Result>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -38,23 +32,50 @@ class PreviousWeekMatches : Fragment() {
         return inflater.inflate(R.layout.fragment_previous_week_matches, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment PreviousWeekMatches.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PreviousWeekMatches().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        var arrayList = activity?.intent?.getStringArrayListExtra("countryList")
+
+
+        val temp0 = mutableListOf<String>()
+        val temp1 = mutableListOf<String>()
+        val temp2 = mutableListOf<String>()
+        val temp3 = mutableListOf<String>()
+        val fixture = mutableListOf<String>()
+
+        for (i in 0..3) {
+            if (arrayList != null) {
+                temp0.add(arrayList[i])
+                temp1.add(arrayList[i + 4])
+                temp2.add(arrayList[i + 8])
+                temp3.add(arrayList[i + 12])
             }
+        }
+
+        for (i in 0..3) {
+            for (j in 0..3) {
+                if (j != i) {
+                    fixture.add("Group A ${temp0.get(j)} vs ${temp0.get(i)}")
+                    fixture.add("Group B ${temp1.get(j)} vs ${temp1.get(i)}")
+                }
+
+            }
+        }
+        countriesArrayList= arrayListOf()
+        var no=0
+        for (i in fixture){
+
+            no += 1
+            countriesArrayList.add(Countries.Result("$no",i,""))
+        }
+        rv_previousDayMatches.layoutManager=LinearLayoutManager(context)
+        rv_previousDayMatches.adapter=CountriesRecyclerAdapter(countriesArrayList)
+
+
+
+
+
+
+
     }
 }
